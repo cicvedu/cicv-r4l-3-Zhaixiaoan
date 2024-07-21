@@ -327,6 +327,10 @@ impl Device {
     pub fn map_resource(&self, resource: &Resource, len: usize) -> Result<MappedResource> {
         MappedResource::try_new(resource.start, len)
     }
+    /// Get raw pointer
+    pub fn to_ptr(&self) -> *mut bindings::pci_dev {
+        self.ptr
+    }
 }
 
 unsafe impl device::RawDevice for Device {
